@@ -30,7 +30,7 @@ class ConnectionWrapper {
                                 $recv_timeout=null)
     {
         $this->server = $server;
-        $server = explode(':', $server);
+        $server = \explode(':', $server);
         $host = $server[0];
         if(count($server) == 2)
             $port = (int)$server[1];
