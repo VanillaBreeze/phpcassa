@@ -10,7 +10,6 @@ require_once $GLOBALS['THRIFT_ROOT'].'/transport/TBufferedTransport.php';
 
 use cassandra\CassandraClient;
 use cassandra\AuthenticationRequest;
-use \;
 
 /**
  * @internl
