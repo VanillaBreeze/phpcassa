@@ -33,7 +33,7 @@ class ConnectionWrapper {
         $this->server = $server;
         $server = \explode(':', $server);
         $host = $server[0];
-        if(count($server) == 2)
+        if(\count($server) == 2)
             $port = (int)$server[1];
         else
             $port = self::DEFAULT_PORT;
