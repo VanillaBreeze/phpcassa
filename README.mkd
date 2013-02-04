@@ -1,4 +1,4 @@
-phpcassa
+phpcassa(tested hiphop-php)
 ========
 
 [![Build Status](https://secure.travis-ci.org/thobbs/phpcassa.png?branch=master)](http://travis-ci.org/thobbs/phpcassa)
@@ -20,6 +20,13 @@ thorough documentation can be found here:
 
 [http://thobbs.github.com/phpcassa](http://thobbs.github.com/phpcassa)
 
+### How to use original git ripository & hiphop patch
+```sh
+wget https://raw.github.com/VanillaBreeze/phpcassa/master/phpcassa-hiphop.patch
+git clone https://github.com/thobbs/phpcassa.git
+cd phpcassa
+cat ../phpcassa-hiphop.patch | patch -p1
+```
 
 Examples
 --------
