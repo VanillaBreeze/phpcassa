@@ -1,5 +1,7 @@
-phpcassa(tested hiphop-php)
+phpcassa(tested hiphop-php & fork version)
 ========
+
+this version is fork version. [original source](https://github.com/thobbs/phpcassa)
 
 [![Build Status](https://secure.travis-ci.org/thobbs/phpcassa.png?branch=master)](http://travis-ci.org/thobbs/phpcassa)
 
