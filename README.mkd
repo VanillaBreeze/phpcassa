@@ -1,16 +1,6 @@
 phpcassa(tested hiphop-php)
 ========
 
-## How to use original git ripository & hiphop patch(Optional)
-if you do not want this repository
-try this
-```sh
-wget https://raw.github.com/VanillaBreeze/phpcassa/master/phpcassa-hiphop.patch
-git clone https://github.com/thobbs/phpcassa.git
-cd phpcassa
-cat ../phpcassa-hiphop.patch | patch -p1 
-```
-
 [![Build Status](https://secure.travis-ci.org/thobbs/phpcassa.png?branch=master)](http://travis-ci.org/thobbs/phpcassa)
 
 phpcassa is a PHP client library for [Apache Cassandra](http://cassandra.apache.org).
@@ -21,6 +11,17 @@ phpcassa is a PHP client library for [Apache Cassandra](http://cassandra.apache.
 phpcassa is compatible with PHP 5.3+
 
 phpcassa is open source under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+## How to use original git ripository & hiphop patch(Optional)
+if you do not want this repository
+try this
+```sh
+wget https://raw.github.com/VanillaBreeze/phpcassa/master/phpcassa-hiphop.patch
+git clone https://github.com/thobbs/phpcassa.git
+cd phpcassa
+cat ../phpcassa-hiphop.patch | patch -p1 
+```
+
 
 Documentation
 -------------
