@@ -1,4 +1,9 @@
 <?php
+
+function _explode($arg1, $arg2) {
+	return explode($arg1, $arg2);
+}
+
 namespace phpcassa\Connection;
 
 // These don't use namespaces yet, so we can't rely on the autoloader
@@ -30,7 +35,7 @@ class ConnectionWrapper {
                                 $recv_timeout=null)
     {
         $this->server = $server;
-        $server = /explode(':', $server);
+        $server = _explode(':', $server);
         $host = $server[0];
         if(count($server) == 2)
             $port = (int)$server[1];
