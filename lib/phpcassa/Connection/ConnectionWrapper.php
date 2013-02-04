@@ -10,10 +10,7 @@ require_once $GLOBALS['THRIFT_ROOT'].'/transport/TBufferedTransport.php';
 
 use cassandra\CassandraClient;
 use cassandra\AuthenticationRequest;
-
-function _explode($arg1, $arg2) {
-	    return explode($arg1, $arg2);
-}
+use \;
 
 /**
  * @internl
@@ -35,7 +32,7 @@ class ConnectionWrapper {
                                 $recv_timeout=null)
     {
         $this->server = $server;
-        $server = _explode(':', $server);
+        $server = \explode(':', $server);
         $host = $server[0];
         if(count($server) == 2)
             $port = (int)$server[1];
