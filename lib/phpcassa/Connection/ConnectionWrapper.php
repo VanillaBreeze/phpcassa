@@ -1,9 +1,5 @@
 <?php
 
-function _explode($arg1, $arg2) {
-	return explode($arg1, $arg2);
-}
-
 namespace phpcassa\Connection;
 
 // These don't use namespaces yet, so we can't rely on the autoloader
@@ -15,8 +11,12 @@ require_once $GLOBALS['THRIFT_ROOT'].'/transport/TBufferedTransport.php';
 use cassandra\CassandraClient;
 use cassandra\AuthenticationRequest;
 
+function _explode($arg1, $arg2) {
+	    return explode($arg1, $arg2);
+}
+
 /**
- * @internal
+ * @internl
  * @package phpcassa\Connection
  */
 class ConnectionWrapper {
