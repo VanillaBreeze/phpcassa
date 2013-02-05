@@ -5,6 +5,9 @@
 
 namespace cassandra;
 
+
+
+
 class CassandraClient implements \cassandra\CassandraIf {
   protected $input_ = null;
   protected $output_ = null;
@@ -80,10 +83,10 @@ class CassandraClient implements \cassandra\CassandraIf {
   {
     $args = new \cassandra\Cassandra_set_keyspace_args();
     $args->keyspace = $keyspace;
-    $bin_accel = ($this->output_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && function_exists('thrift_protocol_write_binary');
+    $bin_accel = ($this->output_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && \function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'set_keyspace', \TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      \thrift_protocol_write_binary($this->output_, 'set_keyspace', \TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {
@@ -96,8 +99,8 @@ class CassandraClient implements \cassandra\CassandraIf {
 
   public function recv_set_keyspace()
   {
-    $bin_accel = ($this->input_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && function_exists('thrift_protocol_read_binary');
-    if ($bin_accel) $result = thrift_protocol_read_binary($this->input_, '\cassandra\Cassandra_set_keyspace_result', $this->input_->isStrictRead());
+    $bin_accel = ($this->input_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && \function_exists('thrift_protocol_read_binary');
+    if ($bin_accel) $result = \thrift_protocol_read_binary($this->input_, '\cassandra\Cassandra_set_keyspace_result', $this->input_->isStrictRead());
     else
     {
       $rseqid = 0;
@@ -133,10 +136,10 @@ class CassandraClient implements \cassandra\CassandraIf {
     $args->key = $key;
     $args->column_path = $column_path;
     $args->consistency_level = $consistency_level;
-    $bin_accel = ($this->output_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && function_exists('thrift_protocol_write_binary');
+    $bin_accel = ($this->output_ instanceof \TProtocol::$TBINARYPROTOCOLACCELERATED) && \function_exists('thrift_protocol_write_binary');
     if ($bin_accel)
     {
-      thrift_protocol_write_binary($this->output_, 'get', \TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
+      \thrift_protocol_write_binary($this->output_, 'get', \TMessageType::CALL, $args, $this->seqid_, $this->output_->isStrictWrite());
     }
     else
     {

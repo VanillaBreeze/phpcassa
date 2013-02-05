@@ -102,14 +102,14 @@ class ConnectionPool {
         $this->servers = $servers;
 
         if (is_null($pool_size))
-            $this->pool_size = max(count($this->servers) * 2, 5);
+            $this->pool_size = \max(\count($this->servers) * 2, 5);
         else
             $this->pool_size = $pool_size;
 
         $this->queue = array();
 
         // Randomly permute the server list
-        shuffle($this->servers);
+        \shuffle($this->servers);
         $this->list_position = 0;
     }
 
@@ -117,20 +117,20 @@ class ConnectionPool {
         // Keep trying to make a new connection, stopping after we've
         // tried every server twice
         $err = "";
-        foreach (range(1, count($this->servers) * 2) as $i)
+        foreach (\range(1, \count($this->servers) * 2) as $i)
         {
             try {
-                $this->list_position = ($this->list_position + 1) % count($this->servers);
+                $this->list_position = ($this->list_position + 1) % \count($this->servers);
                 $new_conn = new ConnectionWrapper($this->keyspace, $this->servers[$this->list_position],
                     $this->credentials, $this->framed_transport, $this->send_timeout, $this->recv_timeout);
-                array_push($this->queue, $new_conn);
+                \array_push($this->queue, $new_conn);
                 $this->stats['created'] += 1;
                 return;
-            } catch (\TException $e) {
+            } catch (TException $e) {
                 $h = $this->servers[$this->list_position];
                 $err = $e;
                 $msg = $e->getMessage();
-                $class = get_class($e);
+                $class = \get_class($e);
                 $this->error_log("Error connecting to $h: $class: $msg", 0);
                 $this->stats['failed'] += 1;
             }
@@ -157,7 +157,7 @@ class ConnectionPool {
      * @return ConnectionWrapper a connection
      */
     public function get() {
-        $num_conns = count($this->queue);
+        $num_conns = \count($this->queue);
         if ($num_conns < $this->pool_size) {
             try {
                 $this->make_conn();
@@ -242,8 +242,8 @@ class ConnectionPool {
      * @return mixed
      */
     public function call() {
-        $args = func_get_args(); // Get all of the args passed to this function
-        $f = array_shift($args); // pull the function from the beginning
+        $args = \func_get_args(); // Get all of the args passed to this function
+        $f = \array_shift($args); // pull the function from the beginning
 
         $retry_count = 0;
         if ($this->max_retries == -1)
@@ -253,7 +253,7 @@ class ConnectionPool {
         else
             $tries = $this->max_retries + 1;
 
-        foreach (range(1, $tries) as $retry_count) {
+        foreach (\range(1, $tries) as $retry_count) {
             $conn = $this->get();
 
             $conn->op_count += 1;
@@ -270,10 +270,10 @@ class ConnectionPool {
             } catch (UnavailableException $ue) {
                 $last_err = $ue;
                 $this->handle_conn_failure($conn, $f, $ue, $retry_count);
-            } catch (\TTransportException $tte) {
+            } catch (TTransportException $tte) {
                 $last_err = $tte;
                 $this->handle_conn_failure($conn, $f, $tte, $retry_count);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->handle_conn_failure($conn, $f, $e, $retry_count);
                 throw $e;
             }
