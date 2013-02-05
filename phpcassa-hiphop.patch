@@ -1,0 +1,29 @@
+--- phpcassa-origin/lib/phpcassa/Connection/ConnectionWrapper.php	2013-02-05 04:17:45.000000000 +0900
++++ phpcassa/lib/phpcassa/Connection/ConnectionWrapper.php	2013-02-05 03:57:06.000000000 +0900
+@@ -1,4 +1,5 @@
+ <?php
++
+ namespace phpcassa\Connection;
+ 
+ // These don't use namespaces yet, so we can't rely on the autoloader
+@@ -11,7 +12,7 @@
+ use cassandra\AuthenticationRequest;
+ 
+ /**
+- * @internal
++ * @internal
+  * @package phpcassa\Connection
+  */
+ class ConnectionWrapper {
+@@ -30,9 +31,9 @@
+                                 $recv_timeout=null)
+     {
+         $this->server = $server;
+-        $server = explode(':', $server);
++        $server = \explode(':', $server);
+         $host = $server[0];
+-        if(count($server) == 2)
++        if(\count($server) == 2)
+             $port = (int)$server[1];
+         else
+             $port = self::DEFAULT_PORT;
