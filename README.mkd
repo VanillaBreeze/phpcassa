@@ -16,16 +16,16 @@ phpcassa is open source under the [MIT license](http://www.opensource.org/licens
 
 ## do not use this lib on hiphop-php
 older content
-```
+```mk
 ## How to use original git ripository & hiphop patch(Optional)
 if you do not want this repository
 try this
-```sh
+
 wget https://raw.github.com/VanillaBreeze/phpcassa/master/phpcassa-hiphop.patch
 git clone https://github.com/thobbs/phpcassa.git
 cd phpcassa
 cat ../phpcassa-hiphop.patch | patch -p1 
-```
+
 ```
 
 
