@@ -14,6 +14,9 @@ phpcassa is compatible with PHP 5.3+
 
 phpcassa is open source under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
 
+## do not use this lib on hiphop-php
+older content
+```
 ## How to use original git ripository & hiphop patch(Optional)
 if you do not want this repository
 try this
@@ -22,6 +25,7 @@ wget https://raw.github.com/VanillaBreeze/phpcassa/master/phpcassa-hiphop.patch
 git clone https://github.com/thobbs/phpcassa.git
 cd phpcassa
 cat ../phpcassa-hiphop.patch | patch -p1 
+```
 ```
 
 
